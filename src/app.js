@@ -18,67 +18,6 @@ app.use("/admin", adminAuth); // this is for auth jwt
 app.use("/", authRouter); // this is handle all route of Auth
 app.use("/", profileRouter); // this is handle all route of Profile
 app.use("/", requestRouter); // this is handle all route of request
-// signup api
-// app.post("/signup", async (req, res) => {
-//   try {
-//     validateSignUpData(req);
-//     const { firstName, lastName, emailId, password } = req.body;
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     console.log(hashedPassword);
-//     const user = new User({
-//       firstName,
-//       lastName,
-//       emailId,
-//       password: hashedPassword,
-//     });
-//     await user.save();
-//     res.send("user added successfully");
-//   } catch (err) {
-//     res.status(401).send("invalid error " + err);
-//   }
-// });
-// // login api
-// app.post("/login", async (req, res) => {
-//   try {
-//     const { emailId, password } = req.body;
-//     const user = await User.findOne({ emailId: emailId });
-//     // console.log(user)
-//     if (!user) {
-//       throw new Error("User is invalid");
-//     }
-//     const compareHashedPassword = await bcrypt.compare(password, user.password);
-//     const token = await jwt.sign({ _id: user._id }, "Aditya@0122", {
-//       expiresIn: "1d",
-//     });
-//     // console.log(token);
-//     if (!compareHashedPassword) {
-//       throw new Error("Password is invalid");
-//     } else {
-//       res.cookie("token", token, { expires: new Date(Date.now() + 900000) });
-//       res.send("user login successfully " + user.firstName);
-//     }
-//   } catch (err) {
-//     res.status(401).send("invalid credentials ");
-//   }
-// });
-// // Profile Page
-// app.get("/profile", adminAuth, async (req, res) => {
-//   try {
-//     const userProfile = req.user;
-//     res.send(userProfile);
-//   } catch (err) {
-//     res.status(401).send("invalid credentials ");
-//   }
-// });
-// // ConnectionRequest Page
-// app.post("/sendConnectionRequest", adminAuth, async (req, res) => {
-//   try {
-//     const userProfile = req.user;
-//     res.send("Connection request is send by " + userProfile.firstName);
-//   } catch (err) {
-//     res.status(401).send("invalid credentials ");
-//   }
-// });
 
 // Search by email
 app.get("/email", async (req, res) => {
