@@ -10,6 +10,7 @@ const jwt = require("jsonwebtoken");
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
+const userRouter = require("./routes/user");
 
 app.use(express.json()); // This is middleware used for parsing json format
 app.use(cookieParser()); // This is middleware used for parsing Cookie format
@@ -18,6 +19,7 @@ app.use("/admin", adminAuth); // this is for auth jwt
 app.use("/", authRouter); // this is handle all route of Auth
 app.use("/", profileRouter); // this is handle all route of Profile
 app.use("/", requestRouter); // this is handle all route of request
+app.use("/", userRouter); // this is handle all route of user
 
 // Search by email
 app.get("/email", async (req, res) => {
